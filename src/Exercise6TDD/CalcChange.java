@@ -1,8 +1,5 @@
 package Exercise6TDD;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class CalcChange {
 
     private int[] sedlarOchMynt = {1000,500,200,100,50,20,10,5,2,1};
@@ -40,8 +37,10 @@ public class CalcChange {
     public void printResult(int change) {
         for (int i = 0; i < sedlarOchMynt.length; i++) {
             int amountOfValör = getAmountOfValör(change, sedlarOchMynt[i]); // Hur många mynt / sedlar
-            System.out.println(getLineForOneValör(amountOfValör, sedlarOchMynt[i])); // sedan skriver vi ut hur många
-            change = removeValör(sedlarOchMynt[i], change, amountOfValör); // change minskas hela tiden
+            if(amountOfValör > 0) {
+                System.out.println(getLineForOneValör(amountOfValör, sedlarOchMynt[i])); // sedan skriver vi ut hur många
+                change = removeValör(sedlarOchMynt[i], change, amountOfValör); // change minskas hela tiden
+            }
         }
     }
 }
