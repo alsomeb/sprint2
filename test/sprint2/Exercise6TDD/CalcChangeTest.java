@@ -4,7 +4,9 @@ import Exercise6TDD.KassaVäxel;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -57,16 +59,6 @@ class CalcChangeTest {
     }
 
     @Test
-    void testProgramPrintsCorrectLines() {
-        List<String> target = kv.printResultToList(654);
-        System.out.println(target);
-        List<String> expected = new ArrayList<>(List.of(
-           "Antal 500-Lappar: 1", "Antal 100-Lappar: 1", "Antal 50-Lappar: 1", "Antal 2-Kronor: 2"
-        ));
-        assertEquals(expected, target);
-    }
-
-    @Test
     void testIfNoVäxelBack() {
         int priceToPay = 1000;
         int givenAmount = 1000;
@@ -84,16 +76,34 @@ class CalcChangeTest {
         assertNotEquals(200, kv.removeBiggestValör(amount, valör, antalValör));
     }
 
-    // testar inläsning
+    // testar inläsning,
+    // provar skriva in 0 kr
     @Test
     void testGetResultReturnsCorrectIfNoChange() {
         assertEquals("Det blev ingen växel", kv.getResult(0).get(0));
         assertNotEquals("Du lämnade för lite pengar", kv.getResult(0).get(0));
     }
 
+    // Test för 654 kr skriver ut dessa rader
     @Test
-    void testGetResultReturnsCorrectIfMoneyNotEnough() {
-        assertEquals("Du lämnade för lite pengar", kv.getResult(-500).get(0));
-        assertNotEquals("Det blev ingen växel", kv.getResult(-500).get(0));
+    void testProgramPrintsCorrectLines() {
+        List<String> target = kv.printResultToList(654);
+        System.out.println(target);
+        List<String> expected = new ArrayList<>(List.of(
+                "Antal 500-Lappar: 1", "Antal 100-Lappar: 1", "Antal 50-Lappar: 1", "Antal 2-Kronor: 2"
+        ));
+        assertEquals(expected, target);
+    }
+
+    @Test
+    void testGetInputThrowsIllegalArgumentExceptionIfNotEnoughMoney() {
+        assertThrows(IllegalArgumentException.class, ()->{
+            kv.calculateChange(100,200);
+        });
+    }
+
+    @Test
+    void testGetInputDoesntThrowWithEnoughMoney() {
+        assertDoesNotThrow( ()-> kv.calculateChange(200, 100)); // Korrekt skall inte kasta fel
     }
 }
