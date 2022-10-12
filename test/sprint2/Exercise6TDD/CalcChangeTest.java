@@ -67,6 +67,13 @@ class CalcChangeTest {
     }
 
     @Test
+    void testIfNoVäxelBack() {
+        int priceToPay = 1000;
+        int givenAmount = 1000;
+        assertEquals(0, kv.calculateChange(givenAmount, priceToPay));
+    }
+
+    @Test
     void testRemoveBiggestValörFromChange() {
         int amount = 1000;
         int valör = 200;
@@ -75,5 +82,17 @@ class CalcChangeTest {
         assertEquals(400, kv.removeBiggestValör(amount, valör, antalValör));
         assertNotEquals(1000, kv.removeBiggestValör(amount, valör, antalValör));
         assertNotEquals(200, kv.removeBiggestValör(amount, valör, antalValör));
+    }
+
+    @Test
+    void testGetResultReturnsCorrectIfNoChange() {
+        assertEquals("Det blev ingen växel", kv.getResult(0).get(0));
+        assertNotEquals("Du lämnade för lite pengar", kv.getResult(0).get(0));
+    }
+
+    @Test
+    void testGetResultReturnsCorrectIfMoneyNotToMuch() {
+        assertEquals("Du lämnade för lite pengar", kv.getResult(-500).get(0));
+        assertNotEquals("Det blev ingen växel", kv.getResult(-500).get(0));
     }
 }

@@ -1,7 +1,9 @@
 package Exercise6TDD;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Scanner;
 
 public class KassaVäxel {
     private final int[] valörer = {1000, 500, 200, 100, 50, 20, 10, 5, 2, 1};
@@ -25,10 +27,12 @@ public class KassaVäxel {
     }
 
     public String printAmountOfValörLine(int valör, int antalAvValör) {
-        return "Antal " + valör + "-" + getSedelEllerMyntString(valör) + ": " + antalAvValör;
+        StringBuilder sb = new StringBuilder();
+        sb.append("Antal ").append(valör).append("-").append(getSedelEllerMyntString(valör)).append(": ").append(antalAvValör);
+        return sb.toString();
     }
 
-    public void printResult(int change) { // kan komma åt change utan att dekl en variabel, o ha den som "totalen" som bearbetar i loopen
+    public void printResultLines(int change) { // kan komma åt change utan att dekl en variabel, o ha den som "totalen" som bearbetar i loopen
         for (int i = 0; i < valörer.length; i++) {
             int valör = valörer[i];
             int antalAvValör = getAmountOfValör(change, valör);
@@ -39,19 +43,30 @@ public class KassaVäxel {
         }
     }
 
+    public List<String> getResult(int change) {
+        return printResultToList(change);
+    }
+
     // Så vi kan testa programmet
     public List<String> printResultToList(int change) { // kan komma åt change utan att dekl en variabel, o ha den som "totalen" som bearbetar i loopen
         List<String> lines = new ArrayList<>();
 
-        for (int i = 0; i < valörer.length; i++) {
-            int valör = valörer[i];
-            int antalAvValör = getAmountOfValör(change, valör);
-            if(antalAvValör > 0) { // Då visar vi bara dem relevanta
-                lines.add(printAmountOfValörLine(valör, antalAvValör));
-                change = removeBiggestValör(change, valör, antalAvValör);
+        if (change > 0) {
+            for (int i = 0; i < valörer.length; i++) {
+                int valör = valörer[i];
+                int antalAvValör = getAmountOfValör(change, valör);
+                if (antalAvValör > 0) { // Då visar vi bara dem relevanta
+                    lines.add(printAmountOfValörLine(valör, antalAvValör));
+                    change = removeBiggestValör(change, valör, antalAvValör);
+                }
             }
+        } else if (change < 0) {
+            lines.add("Du lämnade för lite pengar");
+        } else {
+            lines.add("Det blev ingen växel");
         }
         return lines;
+
     }
 
 
