@@ -92,7 +92,7 @@ class CalcChangeTest {
     }
 
     @Test
-    void testGetResultReturnsCorrectIfMoneyNotToMuch() {
+    void testGetResultReturnsCorrectIfMoneyNotEnough() {
         assertEquals("Du lämnade för lite pengar", kv.getResult(-500).get(0));
         assertNotEquals("Det blev ingen växel", kv.getResult(-500).get(0));
     }
