@@ -3,6 +3,9 @@ package sprint2.Exercise6TDD;
 import Exercise6TDD.KassaVäxel;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class CalcChangeTest {
@@ -42,9 +45,9 @@ class CalcChangeTest {
         int amount200 = 200;
         int amount500 = 500;
         int amount1000 = 1000;
-        assertEquals("Mynt", kv.getSedelEllerMyntString(amount2));
-        assertEquals("Mynt", kv.getSedelEllerMyntString(amount5));
-        assertEquals("Mynt", kv.getSedelEllerMyntString(amount10));
+        assertEquals("Kronor", kv.getSedelEllerMyntString(amount2));
+        assertEquals("Kronor", kv.getSedelEllerMyntString(amount5));
+        assertEquals("Kronor", kv.getSedelEllerMyntString(amount10));
         assertEquals("Lappar", kv.getSedelEllerMyntString(amount20));
         assertEquals("Lappar", kv.getSedelEllerMyntString(amount50));
         assertEquals("Lappar", kv.getSedelEllerMyntString(amount100));
@@ -54,8 +57,13 @@ class CalcChangeTest {
     }
 
     @Test
-    void test() {
-        kv.printResult(654);
+    void testProgramPrintsCorrectLines() {
+        List<String> target = kv.printResultToList(654);
+        System.out.println(target);
+        List<String> expected = new ArrayList<>(List.of(
+           "Antal 500-Lappar: 1", "Antal 100-Lappar: 1", "Antal 50-Lappar: 1", "Antal 2-Kronor: 2"
+        ));
+        assertEquals(expected, target);
     }
 
     @Test
