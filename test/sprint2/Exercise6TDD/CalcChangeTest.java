@@ -84,6 +84,7 @@ class CalcChangeTest {
         assertNotEquals(200, kv.removeBiggestValör(amount, valör, antalValör));
     }
 
+    // testar inläsning
     @Test
     void testGetResultReturnsCorrectIfNoChange() {
         assertEquals("Det blev ingen växel", kv.getResult(0).get(0));
