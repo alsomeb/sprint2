@@ -3,7 +3,7 @@ package Exercise6TDD;
 public class KassaVäxel {
     private int[] valörer = {1000, 500, 200, 100, 50, 20, 10, 5, 2, 1};
     private String lappar = "Lappar";
-    private String mynt = "Mynt"; //
+    private String mynt = "Mynt";
 
     public int calculateChange(int givenAmountToCashier, int priceToPay) {
         return givenAmountToCashier-priceToPay;
