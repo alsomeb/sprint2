@@ -98,7 +98,12 @@ class CalcChangeTest {
         List<String> expected = new ArrayList<>(List.of(
                 "Antal 500-Lappar: 1", "Antal 100-Lappar: 1", "Antal 50-Lappar: 1", "Antal 2-Kronor: 2"
         ));
+
         assertEquals(expected, target);
+        // Denna verkar ej behövas med for loopen då assertEquals känner av innehåll
+        for (int i = 0; i < target.size(); i++) {
+            assertEquals(expected.get(i), target.get(i));
+        }
     }
 
     @Test
