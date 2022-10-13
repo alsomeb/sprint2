@@ -5,6 +5,8 @@ import java.nio.file.Path;
 import java.util.*;
 import java.util.stream.Collectors;
 
+// FÖRBÄTTRINGAR TILL NÄSTA GÅNG, ha listan sparad i objektet, så jag inte behöver läsa in den hela tiden, funkar i detta program men ej bra i större
+
 public class ReadTemp {
     private final Path path;
 

@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class CollectFromFile {
+
+    // FÖRBÄTTRINGAR: Kanske i detta program ladda filen direkt i Construktor, slipper några rader kod i main då
     private final List<Person> persons;
 
     public CollectFromFile() {
