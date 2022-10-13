@@ -92,7 +92,7 @@ class CalcChangeTest {
 
     // Test för 654 kr skriver ut dessa rader
     @Test
-    void testProgramPrintsCorrectLines() {
+    void testPrintResultToListReturnsCorrect() {
         List<String> target = kv.printResultToList(654);
         System.out.println(target);
         List<String> expected = new ArrayList<>(List.of(
