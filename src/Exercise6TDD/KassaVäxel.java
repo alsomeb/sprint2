@@ -52,10 +52,10 @@ public class KassaVäxel {
         if(change >= 0) {
             return givenAmountToCashier-priceToPay;
         }
-        throw new IllegalArgumentException(); // om det är minus så kasta fel
+        throw new IllegalArgumentException(); // om det är minus så kasta fel som vi fångar i handleInput metoden ovan
     }
 
-    public int getAmountOfValör(int amount, int valör) { // bara intresserade av heltalen
+    public int getAmountOfValör(int amount, int valör) { // bara intresserade av heltalen, kommer ej bli decimal
         return amount / valör;
     }
 
