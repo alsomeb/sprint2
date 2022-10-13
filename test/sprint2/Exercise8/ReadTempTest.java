@@ -4,14 +4,17 @@ import Exercise8.ReadTemp;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class ReadTempTest {
 
-    File fil = new File("resources/temp.txt");
-    ReadTemp rt = new ReadTemp(fil);
+    Path url = Paths.get("resources/temp.txt");
+    // File fil = new File("resources/temp.txt"); <-- LEGACY ANVÄND PATH ISTÄLLET
+    ReadTemp rt = new ReadTemp(url);
 
     @Test
     void testReadAllLinesInFileToList() {

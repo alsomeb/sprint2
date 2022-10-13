@@ -1,23 +1,23 @@
 package Exercise8;
 
 import java.io.*;
+import java.nio.file.Path;
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class ReadTemp {
-    private final File fromFile;
+    private final Path path;
 
-    public ReadTemp(File fromFile) {
-        this.fromFile = fromFile;
+    public ReadTemp(Path path) {
+        this.path = path;
     }
-
 
     public List<String> generateListFromFile () {
         List<String> lines = new ArrayList<>();
         String currentLine;
 
         // Try with resources, den .close() automagiskt!! best practice
-        try(BufferedReader br = new BufferedReader(new FileReader(fromFile))) {
+        try(BufferedReader br = new BufferedReader(new FileReader(path.toFile()))) {
             while ((currentLine = br.readLine()) != null) {
                 lines.add(currentLine.trim().replace(",", "."));
             }
