@@ -16,6 +16,7 @@ public class ReadTemp {
         List<String> lines = new ArrayList<>();
         String currentLine;
 
+        // Try with resources, den .close() automagiskt!! best practice
         try(BufferedReader br = new BufferedReader(new FileReader(fromFile))) {
             while ((currentLine = br.readLine()) != null) {
                 lines.add(currentLine.trim().replace(",", "."));
