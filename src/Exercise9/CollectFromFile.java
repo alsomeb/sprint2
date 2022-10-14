@@ -27,9 +27,9 @@ public class CollectFromFile {
             StringBuilder sb = new StringBuilder();
 
             while ((currentLine = reader.readLine()) != null) {
-                counter++;
                 sb.append(currentLine).append(", ");
-                if(counter == 2) {
+                counter++;
+                if(counter >= 2) {
                     String[] lines = sb.toString().split(",");
                     Person currentPerson = new Person(lines[0],
                             lines[1],
