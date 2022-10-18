@@ -11,7 +11,7 @@ public class HuvudProgram {
             try {
                 count++;
                 double nr1 = operators.collectNumberPrompt(count);
-                double nr2 = operators.collectNumberPrompt(++count); // ++count == tar +1 på talet före innan användning
+                double nr2 = operators.collectNumberPrompt(++count); // ++count == tar +1 på talet före innan användning//
                 String operator = operators.collectOperatorPrompt();
                 JOptionPane.showMessageDialog(null, operators.calculate(nr1, nr2, operator));
                 break;
