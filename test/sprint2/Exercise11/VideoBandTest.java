@@ -4,10 +4,8 @@ import Exercise11.VideoBand;
 import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.Month;
-import java.util.Scanner;
+
 
 import static org.junit.jupiter.api.Assertions.*;
 /*
