@@ -24,7 +24,7 @@ public class HuvudProgram {
     public void printObjectFromFile() {
         ReadObjectsFromFile ro = new ReadObjectsFromFile();
         try {
-            List<Object> allaFordonFrånFil = ro.collectFordonListFromFile();
+            List<Fordon> allaFordonFrånFil = ro.collectFordonListFromFile();
             allaFordonFrånFil.forEach(fordon -> ((Fordon) fordon).printMeInterface());
         } catch (IOException | ClassNotFoundException e) {
             System.out.println("Något gick fel vid inläsningen från filen");
