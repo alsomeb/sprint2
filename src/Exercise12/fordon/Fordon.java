@@ -1,7 +1,6 @@
 package Exercise12.fordon;
 
 import java.io.Serializable;
-import java.util.List;
 
 public abstract class Fordon implements Printable, Serializable {
     // Behöver ej implement metoden printMeInterface() i denna klass pga abstract!
